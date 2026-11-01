@@ -1,0 +1,435 @@
+
+/* =====================================
+   GENERAL RESET
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6fb;
+    color: #222;
+    padding: 25px;
+}
+
+header {
+    background: #172554;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+main {
+    max-width: 1200px;
+    margin: auto;
+}
+
+section {
+    margin-bottom: 25px;
+}
+
+.section-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.section-card h2 {
+    color: #172554;
+    margin-bottom: 20px;
+}
+
+/* =====================================
+   DASHBOARD
+===================================== */
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.dashboard-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-card h3 {
+    color: #64748b;
+    margin-bottom: 12px;
+}
+
+.dashboard-card h2 {
+    color: #172554;
+    font-size: 25px;
+    overflow-wrap: anywhere;
+}
+
+/* =====================================
+   FORMS
+===================================== */
+
+form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+form div,
+.date-filter div,
+.budget-input div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-weight: bold;
+    color: #334155;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    background: white;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+button {
+    padding: 12px 18px;
+    border: none;
+    border-radius: 6px;
+    background: #2563eb;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+form button {
+    align-self: end;
+}
+
+.cancel-btn {
+    background: #64748b;
+}
+
+/* =====================================
+   ACTION BUTTONS
+===================================== */
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.export-btn {
+    background: #10b981;
+}
+
+.backup-btn {
+    background: #2563eb;
+}
+
+.restore-btn {
+    background: #7c3aed;
+}
+
+/* =====================================
+   SEARCH AND FILTERS
+===================================== */
+
+.filter-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+/* =====================================
+   TRANSACTION TABLE
+===================================== */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 650px;
+}
+
+th,
+td {
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background: #172554;
+    color: white;
+}
+
+td.income {
+    color: #059669;
+    font-weight: bold;
+}
+
+td.expense {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.edit-btn {
+    background: #2563eb;
+    padding: 8px 12px;
+    margin: 2px;
+}
+
+.delete-btn {
+    background: #dc2626;
+    padding: 8px 12px;
+    margin: 2px;
+}
+
+.empty-message {
+    text-align: center;
+    color: #64748b;
+}
+
+/* =====================================
+   CHARTS
+===================================== */
+
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+}
+
+.chart-card {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 0;
+}
+
+.chart-card h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #334155;
+}
+
+.chart-card canvas {
+    max-height: 300px;
+}
+
+/* =====================================
+   DATE RANGE ANALYSIS
+===================================== */
+
+.date-filter {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.date-range-results {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.summary-card {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.summary-card h3 {
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.summary-card p {
+    color: #172554;
+    font-size: 20px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+/* =====================================
+   MONTHLY BUDGET
+===================================== */
+
+.budget-input {
+    display: grid;
+    grid-template-columns: 2fr 2fr auto;
+    gap: 15px;
+    align-items: end;
+}
+
+.budget-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.budget-progress {
+    margin-top: 25px;
+}
+
+.budget-progress h3 {
+    margin-bottom: 12px;
+    color: #334155;
+}
+
+.progress-container {
+    width: 100%;
+    height: 20px;
+    background: #e2e8f0;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#budgetProgressBar {
+    height: 100%;
+    width: 0%;
+    background: #10b981;
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+#budgetMessage {
+    margin-top: 12px;
+    color: #475569;
+    font-weight: bold;
+}
+
+/* =====================================
+   MONTHLY ANALYSIS
+===================================== */
+
+.monthly-summary {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.monthly-card {
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.monthly-card h3 {
+    color: #64748b;
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.monthly-card p {
+    color: #172554;
+    font-size: 19px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+}
+
+.monthly-chart {
+    margin-top: 30px;
+    background: #f8fafc;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.monthly-chart h3 {
+    margin-bottom: 20px;
+    color: #334155;
+}
+
+.monthly-chart canvas {
+    max-height: 350px;
+}
+
+/* =====================================
+   RESPONSIVE DESIGN
+===================================== */
+
+@media (max-width: 700px) {
+    body {
+        padding: 12px;
+    }
+
+    header {
+        padding: 22px 12px;
+    }
+
+    header h1 {
+        font-size: 23px;
+    }
+
+    .dashboard,
+    .charts-container,
+    .date-range-results,
+    .budget-summary,
+    .monthly-summary {
+        grid-template-columns: 1fr;
+    }
+
+    form,
+    .filter-container,
+    .date-filter,
+    .budget-input {
+        grid-template-columns: 1fr;
+    }
+
+    .section-card {
+        padding: 18px;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .action-buttons button {
+        width: 100%;
+    }
+}
