@@ -59,6 +59,17 @@ The application uses browser Local Storage to save transactions and monthly budg
 - Downloadable financial reports
 - Advanced spending insights
 
+## Application Screenshots
+
+### Dashboard
+![Dashboard](dashboard.png)
+
+### Transaction History
+![Transaction History](transactions.png)
+
+### Analytics and Budget Management
+![Analytics](analytics.png)
+
 ## Author
 
 **Adithya S.**
