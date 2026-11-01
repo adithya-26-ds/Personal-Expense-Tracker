@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Expense Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Personal Expense Tracker</h1>
+        <p>Manage your money, track your expenses.</p>
+    </header>
+
+    <main>
+
+        <section class="dashboard">
+            <div class="dashboard-card">
+                <h3>Total Balance</h3>
+                <h2 id="balance">₹0.00</h2>
+            </div>
+            <div class="dashboard-card">
+                <h3>Total Income</h3>
+                <h2 id="income">₹0.00</h2>
+            </div>
+            <div class="dashboard-card">
+                <h3>Total Expenses</h3>
+                <h2 id="expenses">₹0.00</h2>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>Add Transaction</h2>
+
+            <form id="expense-form">
+                <div>
+                    <label for="description">Description</label>
+                    <input type="text" id="description" placeholder="Enter description" required>
+                </div>
+
+                <div>
+                    <label for="amount">Amount (₹)</label>
+                    <input type="number" id="amount" min="0.01" step="0.01" placeholder="Enter amount" required>
+                </div>
+
+                <div>
+                    <label for="type">Type</label>
+                    <select id="type" required>
+                        <option value="expense">Expense</option>
+                        <option value="income">Income</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="category">Category</label>
+                    <select id="category" required>
+                        <option value="Food">Food</option>
+                        <option value="Transport">Transport</option>
+                        <option value="Shopping">Shopping</option>
+                        <option value="Education">Education</option>
+                        <option value="Bills">Bills</option>
+                        <option value="Salary">Salary</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+                </div>
+
+                <button type="submit" id="submitBtn">Add Transaction</button>
+                <button type="button" id="cancelEditBtn" class="cancel-btn" hidden>Cancel Edit</button>
+            </form>
+        </section>
+
+        <section class="section-card">
+            <h2>Transaction History</h2>
+
+            <div class="action-buttons">
+                <button type="button" id="exportBtn" class="export-btn">Export Transactions (CSV)</button>
+                <button type="button" id="backupDataBtn" class="backup-btn">Backup Data (JSON)</button>
+                <button type="button" id="restoreDataBtn" class="restore-btn">Restore Data</button>
+                <input type="file" id="restoreFileInput" accept=".json,application/json" hidden>
+            </div>
+
+            <div class="filter-container">
+                <input type="text" id="searchInput" placeholder="Search transactions...">
+
+                <select id="typeFilter">
+                    <option value="all">All Types</option>
+                    <option value="income">Income</option>
+                    <option value="expense">Expense</option>
+                </select>
+
+                <select id="categoryFilter">
+                    <option value="all">All Categories</option>
+                    <option value="Food">Food</option>
+                    <option value="Transport">Transport</option>
+                    <option value="Shopping">Shopping</option>
+                    <option value="Education">Education</option>
+                    <option value="Bills">Bills</option>
+                    <option value="Salary">Salary</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                            <th>Type</th>
+                            <th>Category</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transaction-list"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section-card">
+            <h2>Expense Analytics</h2>
+
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>Expenses by Category</h3>
+                    <canvas id="categoryChart"></canvas>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Income vs Expenses</h3>
+                    <canvas id="incomeExpenseChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card date-range-section">
+            <h2>Custom Date Range Analysis</h2>
+
+            <div class="date-filter">
+                <div>
+                    <label for="startDate">Start Date</label>
+                    <input type="date" id="startDate">
+                </div>
+
+                <div>
+                    <label for="endDate">End Date</label>
+                    <input type="date" id="endDate">
+                </div>
+
+                <button type="button" id="analyzeBtn">Analyze</button>
+            </div>
+
+            <div class="date-range-results">
+                <div class="summary-card">
+                    <h3>Total Income</h3>
+                    <p id="rangeIncome">₹0.00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Total Expenses</h3>
+                    <p id="rangeExpenses">₹0.00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Remaining Balance</h3>
+                    <p id="rangeBalance">₹0.00</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-card budget-section">
+            <h2>Monthly Budget Management</h2>
+
+            <div class="budget-input">
+                <div>
+                    <label for="monthlyBudgetInput">Monthly Budget (₹)</label>
+                    <input type="number" id="monthlyBudgetInput" min="0" step="0.01" placeholder="Enter budget">
+                </div>
+
+                <div>
+                    <label for="budgetMonthInput">Select Budget Month</label>
+                    <input type="month" id="budgetMonthInput">
+                </div>
+
+                <button type="button" id="saveBudgetBtn">Save Budget</button>
+            </div>
+
+            <div class="budget-summary">
+                <div class="summary-card">
+                    <h3>Budget Amount</h3>
+                    <p id="budgetAmount">₹0.00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Amount Spent</h3>
+                    <p id="budgetSpent">₹0.00</p>
+                </div>
+                <div class="summary-card">
+                    <h3>Remaining Budget</h3>
+                    <p id="budgetRemaining">₹0.00</p>
+                </div>
+            </div>
+
+            <div class="budget-progress">
+                <h3>Budget Usage</h3>
+                <div class="progress-container">
+                    <div id="budgetProgressBar"></div>
+                </div>
+                <p id="budgetMessage">Select a month and set your budget.</p>
+            </div>
+        </section>
+
+        <section class="section-card monthly-analytics">
+            <h2>Monthly Expense Analysis</h2>
+
+            <div class="monthly-summary">
+                <div class="monthly-card">
+                    <h3>Current Month Income</h3>
+                    <p id="monthlyIncome">₹0.00</p>
+                </div>
+                <div class="monthly-card">
+                    <h3>Current Month Expenses</h3>
+                    <p id="monthlyExpenses">₹0.00</p>
+                </div>
+                <div class="monthly-card">
+                    <h3>Highest Spending Month</h3>
+                    <p id="highestSpendingMonth">Not available</p>
+                </div>
+            </div>
+
+            <div class="monthly-chart">
+                <h3>Monthly Spending Trend</h3>
+                <canvas id="monthlyExpenseChart"></canvas>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
